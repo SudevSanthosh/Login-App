@@ -1,0 +1,65 @@
+body{
+background: #C6FFDD;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to left, #C6FFDD, #f7797d, #FBD786);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+    
+}
+
+.login-form-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    margin-top: 5%;
+    padding: 45px;
+    text-align: center;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+ 
+}
+.username-field{
+
+    height: 30px;
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10px; 
+    border: 3px solid #dfe6e9;
+    font-size: 15px;
+
+}
+.password-field{
+    height: 30px;
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 10%; 
+    border: #636e72;
+    font-size: 15px;
+    border: 3px solid #dfe6e9;
+
+}
+.username-field:focus{
+    outline: none;
+    border: 3px solid #f7797d;
+}
+.password-field:focus{
+    outline: none;
+    border: 3px solid #f7797d;
+
+}
+.login-button{
+    border-radius: 25px;
+    width: 70%;
+    height: 40px;
+    border: none;
+    background-color: #3498db;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.login-button:hover{
+    background-color: #3742fa;
+}
+
