@@ -1,38 +1,55 @@
-import './styles/App.css';
-
+import './styles/App.css'
 import React, {Component} from "react"
 import Header from './Header'
-
 class App extends Component {
-    constructor() {
+ constructor() {
         super()
         this.state = {
           userId: "",
-          passWord: ""
-        }
+          passWord: "",
+          character: {}
+         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    
     handleChange(event) {
         const {name, value} = event.target
         this.setState({
             [name]: value
-        })
+         })
     }
     handleSubmit(event) {
-      alert(this.state.userId + " " + this.state.passWord + " is submitted");
+        const emailRegex = /\S+@\S+\.\S+/;
+        
+        if (this.state.userId=== '' || this.state.passWord==='' || emailRegex.test(this.state.userId)===false) 
+        {
+            alert( 'ERROR !! User Id or Password is Incorrect');
+            
+        }
+        else{
+        alert(this.state.userId + " " + this.state.passWord + " is submitted");
+        }
+        
       event.preventDefault();
+     }
+    componentDidMount()
+     {
+        fetch('https://jsonplaceholder.typicode.com/users/1')
+        .then(response => response.json())
+        .then(data => {
+            this.setState({
+                character: data
+            })
+        })
     }
-    
-    render() {
+   
+ render() {
         return (
-          
           <div>
             <Header />
            <div className="login-form-container">
             
-            <form onSubmit={this.handleSubmit}>
+            <form onSubmit={this.handleSubmit} >
                 <input
                     type="text" 
                     className="username-field"
@@ -51,27 +68,21 @@ class App extends Component {
                     onChange={this.handleChange} 
                 />
                 <br />
-                <input
+                
+                <button
                       type="submit"
                       value="Sign in"
                       className="login-button"
-                />
-
-              
-                
-
+                      > Sign in
+                </button>
             </form>
-            
             </div>
-            <h3>{this.state.userId} <br/>
-            {this.state.passWord}</h3>
+            <h1>{this.state.character.name} </h1>
             </div>
         )
     }
 }
-
 export default App;
-
 
 
 
