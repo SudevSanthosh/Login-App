@@ -1,16 +1,18 @@
-import './styles/App.css'
+ import './styles/App.css'
 import React, {Component} from "react"
 import Header from './Header'
+import Page from './Page'
+import { BrowserRouter as Router , Link, Route ,Switch, Redirect} from 'react-router-dom'
 class App extends Component {
  constructor() {
         super()
         this.state = {
           userId: "",
           passWord: "",
-          character: {}
+          userLists: []
          }
         this.handleChange = this.handleChange.bind(this)
-        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this)
     }
     handleChange(event) {
         const {name, value} = event.target
@@ -26,25 +28,31 @@ class App extends Component {
             alert( 'ERROR !! User Id or Password is Incorrect');
             
         }
-        else{
-        alert(this.state.userId + " " + this.state.passWord + " is submitted");
+       
+        if(this.state.userId in this.userLists)
+        {
+            alert("hello");
         }
+        
+        
         
       event.preventDefault();
      }
     componentDidMount()
      {
-        fetch('https://jsonplaceholder.typicode.com/users/1')
+        fetch('https://jsonplaceholder.typicode.com/users')
         .then(response => response.json())
         .then(data => {
             this.setState({
-                character: data
+                userLists: data
             })
         })
     }
    
  render() {
+     
         return (
+        <Router>
           <div>
             <Header />
            <div className="login-form-container">
@@ -71,24 +79,30 @@ class App extends Component {
                 
                 <button
                       type="submit"
-                      value="Sign in"
                       className="login-button"
                       > Sign in
                 </button>
+               
             </form>
+            
+            
             </div>
-            <h1>{this.state.character.name} </h1>
+            <h1>{this.state.userLists.name} </h1>
+            
+            <ul>
+                <li>
+                  <Link to='/Page'> NEXT PAGE </Link>
+                </li>
+            </ul>
+            
             </div>
-        )
+            <Switch>
+            <Route path ='/Page' component={Page}></Route>
+            </Switch>
+            </Router>
+
+
+        );
     }
 }
 export default App;
-
-
-
-
-
-
-
-
-
