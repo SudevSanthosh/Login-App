@@ -1,9 +1,6 @@
 import './styles/App.css'
 import React, { Component } from "react"
 import Header from './Header'
-import { Link } from 'react-router-dom'
-import Child from './Child'
-
 class Page extends Component {
 
 
@@ -29,28 +26,26 @@ class Page extends Component {
         event.preventDefault();
         const { userId, passWord, userLists } = this.state
         const { history } = this.props
-        userLists.filter(
-            (useritem) => {
+        userLists.filter((useritem) => {
 
                 if (userId === useritem.email && passWord === useritem.username) {
                   localStorage.setItem('myArray', JSON.stringify(useritem));
-                   
-                    
-                     history.push('/Child')
+                  localStorage.setItem('myArray1', JSON.stringify(useritem));
+                  
+                   history.push('/Details')
                 }
+                
             }
         )
-       // console.log(loggedinUser)
+       
     }
 
 
     componentDidMount() {
         fetch('https://jsonplaceholder.typicode.com/users')
             .then(response => response.json())
-            .then(data => {
-                this.setState({
-                    userLists: data
-                })
+            .then(data => {this.setState({
+                    userLists: data })
             })
 
     }
@@ -92,14 +87,8 @@ class Page extends Component {
                         </button>
 
                     </form>
-
-
                 </div>
-
-                <p>Antonette  //  Clementina DuBuque </p>
-
-
-            </div>
+                </div>
 
 
 

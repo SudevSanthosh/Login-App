@@ -1,27 +1,24 @@
-import React from "react"
-import Header from './Header'
-import Page  from './Page'
-import Child from "./Child"
-import Posts from "./Posts"
-import {Link, Route ,Switch,  BrowserRouter , Navigate} from 'react-router-dom'
- function App(){
-return(
-<BrowserRouter>
+import './styles/App.css'
+import React, {Component} from "react"
+import Page from './Page'
+import Details from './Details'
+import Posts from './Posts'
+import { BrowserRouter as Router , Link, Route ,Switch, Redirect} from 'react-router-dom'
+class App extends Component {
+ constructor() {
+        super()
+        }
+    render() {
+      return (
+        <Router>
+             <Switch>
+            <Route exact path='/' component={Page}></Route> 
+            <Route exact path ='/Details' component={Details}></Route>
+            <Route exact path ='/Posts' component={Posts}></Route>
+            </Switch>
+            </Router>
+             );
+    }
+}
+export default App;
 
-    <Switch>
-        <Route exact path='/' component={Header} />
-        <Route exact path='/Child' component={Child}/>
-        <Route exact path='/Page' component={Page}/>
-        <Route exact path='/Posts' component={Posts}/>
-
-
-    </Switch>
-
-
-
-</BrowserRouter>
-
-
-)
- }
- export default App

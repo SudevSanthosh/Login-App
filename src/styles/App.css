@@ -87,3 +87,10 @@ background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/
     text-align: center;
     
 }
+.post-list{
+ text-align: center;
+}
+.post-list ul{
+    display:inline-table;
+}
+
