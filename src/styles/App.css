@@ -62,4 +62,35 @@ background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/
 .login-button:hover{
     background-color: #3742fa;
 }
+.log-out{
+   
+    text-decoration: none;
+    align-items :flex-end;
+    text-align :right;
+    margin: 0 auto;
+    padding:  0; 
+    margin-top: 10px;
+    margin-right: 20px;
+}
+.logout-button{
+    font-weight: bold;
+    text-decoration: none;
+    color: white;
+    background-color: #c0392b;
+    border-radius: 5px;
+    font-size: larger;
+}
+.user-details{
+
+
+    align-items: center;
+    text-align: center;
+    
+}
+.post-list{
+ text-align: center;
+}
+.post-list ul{
+    display:inline-table;
+}
 
