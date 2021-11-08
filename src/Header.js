@@ -1,15 +1,57 @@
 import React from 'react';
 import './styles/page1.css';
-import Page from './Page';
-import Details from './Details';
-import { BrowserRouter as Router , Link, Route ,Switch, Redirect, BrowserRouter} from 'react-router-dom'
+import './styles/App.css'
+import { useHistory } from "react-router-dom";
 
-function Header() {
-    return (
-  <div>
-    <p className="header-title">Welcome!</p>
-    </div>
-    );
-  }
+const Header= () => 
+{
+let history=useHistory();
+
+function viewProfile(){
+  history.push("/Details")
+}
+
+function signOut(){
+  localStorage.removeItem('selectedUser')
+  history.push("/")
+}
+
+function viewPosts() {
+  history.push("/Posts")
+}
+
+const user= JSON.parse(localStorage.getItem('selectedUser'));   
+return (
+    <div className="header-components">
+      <button 
+          onClick={signOut} 
+          className="signout-button"> 
+          Log out 
+      </button>
+      <button 
+        onClick={viewProfile}
+        className = "viewprofile-button"> 
+        {user.name}
+      </button>
+      <button 
+        onClick={viewPosts} 
+        className="viewposts-button"> 
+        My Posts
+      </button>
+   </div>
+     );
+    }
+export default Header; 
+     
+ 
+    
+      
+     
   
-  export default Header; 
+      
+   
+   
+    
+    
+  
+  

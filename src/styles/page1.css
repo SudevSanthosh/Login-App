@@ -1,5 +1,4 @@
 .header-title{
-    
     margin-top : 80px;
     padding:  0;  
     font-size: 60px;
@@ -7,4 +6,21 @@
     align-items: center;
     text-align: center;
     text-shadow: 2px 2px #f7797d;
+}
+.comments-container{
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+    background: #FFFFFF;
+    max-width: 360px;
+    margin: 0 auto 100px;
+    margin-top: 5%;
+    padding: 45px;
+    text-align: center;     
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+ 
+}
+.main-headings{
+    color :#e84118;
+    text-align: center;
 }

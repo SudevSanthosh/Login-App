@@ -1,11 +1,9 @@
 body{
-background: #C6FFDD;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to left, #C6FFDD, #f7797d, #FBD786);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-
-    
+    background-color: #ffffff;
+ 
+    background: radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, #ffffff 20%, #ffffff 80%, transparent 80%, transparent) 100px 100px, linear-gradient(#f1f2f6 8px, transparent 8px) 0 -4px, linear-gradient(90deg, #c7ecee 8px, #ffffff 8px) -4px 0;
+    background-size: 200px 200px, 200px 200px, 100px 100px, 100px 100px;
 }
-
 .login-form-container{
     display: flex;
     flex-direction: column;
@@ -15,7 +13,7 @@ background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/
     margin: 0 auto 100px;
     margin-top: 5%;
     padding: 45px;
-    text-align: center;
+    text-align: center;     
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
  
 }
@@ -41,12 +39,11 @@ background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/
 }
 .username-field:focus{
     outline: none;
-    border: 3px solid #f7797d;
+    border: 3px solid #e84118;
 }
 .password-field:focus{
     outline: none;
-    border: 3px solid #f7797d;
-
+    border: 3px solid #e84118;
 }
 .login-button{
     border-radius: 25px;
@@ -62,24 +59,8 @@ background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/
 .login-button:hover{
     background-color: #3742fa;
 }
-.log-out{
-   
-    text-decoration: none;
-    align-items :flex-end;
-    text-align :right;
-    margin: 0 auto;
-    padding:  0; 
-    margin-top: 10px;
-    margin-right: 20px;
-}
-.logout-button{
-    font-weight: bold;
-    text-decoration: none;
-    color: white;
-    background-color: #c0392b;
-    border-radius: 5px;
-    font-size: larger;
-}
+
+
 .user-details{
 
 
@@ -88,9 +69,73 @@ background: linear-gradient(to left,#C6FFDD, #f7797d, #FBD786 ); /* W3C, IE 10+/
     
 }
 .post-list{
- text-align: center;
+    text-align: center;
 }
 .post-list ul{
     display:inline-table;
 }
+.post-list ul li{
+    color:black;
+    font-size: medium;
+}
+.post-list ul li:hover{
+    color :#3742fa;
+    font-size: larger;
+}
+.viewpost-button :hover{
+    background-color: #3742fa;
+}
+.header-components{
+    
+    margin-top: 5px;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: white;
+   
+    
+    
+}
+.viewprofile-button{
+    margin-left: 10px ;
+    cursor: pointer;
+    font-size: 20px;
+    background: none;
+    color: #0097e6;;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    float: left;
+    
+}
+.signout-button{
+    margin-left: 10px ;
+    margin-right: 10px;
+    background-color: #e84118;
+    color: white;
+    cursor: pointer;
+    font-size: 20px;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    float: right;
+    
+}
+.viewposts-button
+{
+    margin-left: 10px;
+    cursor: pointer;
+    font-size: 20px;
+    background-color: #0097e6;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    font-weight: bold;
+    float: right;
+}
 
+.user-name{
+    float: left;
+    
+    
+}
