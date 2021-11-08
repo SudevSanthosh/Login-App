@@ -1,44 +1,57 @@
-import React, { useState, useEffect } from 'react'
-import Header from './Header'
-import './styles/page1.css';
+import React, { Component } from "react";
+import Header from "./Header";
+import "./styles/page1.css";
 
-function PostComments(){
-    const selectedUserPost=  JSON.parse( localStorage.getItem('userPost'))
-    const [ response, setResponse ] = useState([])
-    
-    const fetchData = () =>{
-        fetch('https://jsonplaceholder.typicode.com/comments')
-        .then((response) => response.json())
-        .then(data => {
-            setResponse(data)
-            })
-        }
+class PostComments extends Component {
+  constructor() {
+    super();
+    this.state = {
+      commentsList: [],
+      selectedUserPost: JSON.parse(localStorage.getItem("userPost")),
+      selectedPost: "",
+    };
+  }
 
-    useEffect(()=>{
-        fetchData()
-    },[])
-    
-    const selectedPost = response.filter((item)=> item.postId === selectedUserPost.id) 
-    return(
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/comments")
+      .then((response) => response.json())
+      .then((data) => {
+        this.setState({
+          commentsList: data,
+        });
+      });
+  }
+
+  filterComments(id) {
+    return this.state.commentsList.filter(
+      (item) => item.postId === this.state.selectedUserPost.id
+    );
+  }
+
+  render() {
+    const filteredComments = this.filterComments(
+      this.state.commentsList.postId
+    );
+
+    return (
+      <div>
         <div>
-            <div>
-                <Header />
-                <br/><br/>
-            </div>
-            <div className="comments-container">
-                <h2 className="main-headings">Comments !!</h2>
-                {
-                selectedPost.map((item)=>(
-                    <div>
-                        <ul>
-                        <li>{item.body}</li>
-                        </ul>
-                    </div>
-                ))
-                }
-            </div>
+          <Header />
+          <br />
+          <br />
         </div>
-        )
-    }
-export default PostComments
-           
+        <div className="comments-container">
+          <h2 className="main-headings">Comments !!</h2>
+          {filteredComments.map((item) => (
+            <div>
+              <ul>
+                <li>{item.body}</li>
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+}
+export default PostComments;
