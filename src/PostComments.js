@@ -32,8 +32,9 @@ class PostComments extends Component {
     const filteredComments = this.filterComments(
       this.state.commentsList.postId
     );
-
+    console.log(filteredComments)
     return (
+      
       <div>
         <div>
           <Header />
