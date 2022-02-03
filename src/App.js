@@ -1,24 +1,54 @@
-import './styles/App.css'
-import React, {Component} from "react"
-import Page from './Page'
-import Details from './Details'
-import Posts from './Posts'
-import { BrowserRouter as Router , Link, Route ,Switch, Redirect} from 'react-router-dom'
+import "./styles/App.css";
+import React, { Component } from "react";
+import Page from "./LoginPage";
+import Details from "./Details";
+import Posts from "./Posts";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Route,
+  Switch,
+} from "react-router-dom";
+import PostComments from "./PostComments";
+
+function ProtectedRoute(props) {
+  const userAuth = JSON.parse(localStorage.getItem("selectedUser"));
+  if (
+    userAuth &&
+    userAuth.username &&
+    userAuth.username.length > 0 &&
+    userAuth.email
+  ) {
+    return <Route {...props} />;
+  } else {
+    return <Redirect to="/" />;
+  }
+}
+
 class App extends Component {
- constructor() {
-        super()
-        }
-    render() {
-      return (
-        <Router>
-             <Switch>
-            <Route exact path='/' component={Page}></Route> 
-            <Route exact path ='/Details' component={Details}></Route>
-            <Route exact path ='/Posts' component={Posts}></Route>
-            </Switch>
-            </Router>
-             );
-    }
+  render() {
+    return (
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Page}></Route>
+          <ProtectedRoute
+            exact
+            path="/details"
+            component={Details}
+          ></ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/posts"
+            component={Posts}
+          ></ProtectedRoute>
+          <ProtectedRoute
+            exact
+            path="/post-comments"
+            component={PostComments}
+          ></ProtectedRoute>
+        </Switch>
+      </Router>
+    );
+  }
 }
 export default App;
-
